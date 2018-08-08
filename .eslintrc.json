@@ -8,6 +8,8 @@
     "no-console": "off",
     "comma-dangle": "off",
     "react/jsx-filename-extension": "off",
-    "quotes":"off"
+    "quotes":"off",
+    "react/destructuring-assignment":"off",
+    "react/jsx-one-expression-per-line":"off"
   }
 }
