@@ -10,6 +10,7 @@
     "react/jsx-filename-extension": "off",
     "quotes":"off",
     "react/destructuring-assignment":"off",
-    "react/jsx-one-expression-per-line":"off"
+    "react/jsx-one-expression-per-line":"off",
+    "indent":"off"
   }
 }
