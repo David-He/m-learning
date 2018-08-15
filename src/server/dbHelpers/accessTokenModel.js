@@ -13,4 +13,4 @@ let oauthTokenSchema = new schema({
     userId: { type: String },
 });
 
-module.exports = mongoose.model('OAuthTokens', oauthTokenSchema);
+module.exports = mongoose.model('OAuthToken', oauthTokenSchema);

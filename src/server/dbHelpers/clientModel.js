@@ -8,4 +8,4 @@ let clientSchema = new schema({
     redirectUris: { type: Array }
 });
 
-module.exports = mongoose.model("OAuthClients", clientSchema);
+module.exports = mongoose.model("OAuthClient", clientSchema);
