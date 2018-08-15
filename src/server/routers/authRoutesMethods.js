@@ -2,8 +2,13 @@ let OAuthUserModel = require("../dbHelpers/userModel");
 
 module.exports = {
     registerUser: registerUser,
+    login: login,
 }
 
+function login(req, res){
+    console.log(`authRoutesMethods: registerUser: req.body is:`, req.body);
+    sendResponse(res, 'login');
+}
 function registerUser(req, res){
     console.log(`authRoutesMethods: registerUser: req.body is:`, req.body);
 
@@ -23,6 +28,8 @@ function registerUser(req, res){
                 oAuthUser.save((err, data)=>{
                     sendResponse(res, data, err)
                 });
+            }else{
+                sendResponse(res, req.body.phoneNum, "user exists");
             }
         }
     )

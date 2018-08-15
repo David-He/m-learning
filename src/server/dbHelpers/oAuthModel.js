@@ -9,10 +9,15 @@ let getAccessToken = function(bearerToken){
 };
 
 let getClient = function(clientId, clientSecret){
-    return OAuthClient.findOne({
-        clientId: clientId,
-        clientSecret: clientSecret
-    }).lean();
+    // return OAuthClient.findOne({
+    //     clientId: clientId,
+    //     clientSecret: clientSecret
+    // }).lean();
+    return {
+        id: clientId,
+        //clientSecret: clientSecret
+        grants: ["password"],
+    }
 };
 
 let getRefreshToken = function(refreshToken){

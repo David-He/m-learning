@@ -3,7 +3,7 @@ const os = require('os')
 const oAuthModel = require('./dbHelpers/oAuthModel')
 const oAuth2Server = require("express-oauth-server")
 const bodyParser = require("body-parser")
-const authRoutes = require("./routers/authRoute")(express.Router());
+
 
 const app = express();
 
@@ -16,6 +16,8 @@ app.oauth = new oAuth2Server({
     continueMiddleware: false,
     
 })
+
+const authRoutes = require("./routers/authRoute")(express.Router(), app);
 
 app.use(express.static('dist'));
 app.use(bodyParser.json());
