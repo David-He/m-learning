@@ -14,7 +14,7 @@ let getClient = function(clientId, clientSecret){
     //     clientSecret: clientSecret
     // }).lean();
     return {
-        id: clientId,
+        clientId: clientId,
         //clientSecret: clientSecret
         grants: ["password"],
     }
@@ -25,8 +25,12 @@ let getRefreshToken = function(refreshToken){
 }
 
 let getUser = function(phoneNum, password){
-    return OAuthUser.findOne({phoneNum: phoneNum, 
+    let user = OAuthUser.findOne({phoneNum: phoneNum, 
         password: password}).lean();
+    if (user){
+        user.client = {clientId: "abc"}
+    }
+    return user;
 }
 
 let saveToken = function(token, client, user){
