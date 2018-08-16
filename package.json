@@ -9,17 +9,18 @@
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon  --inspect src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
-    
   },
   "author": "Sandeep Raveesh",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "draft-js": "^0.10.5",
     "express": "^4.16.3",
     "express-oauth-server": "^2.0.0",
     "mongoose": "^5.2.7",
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-dom": "^16.3.1",
+    "react-draft-wysiwyg": "^1.12.13"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
