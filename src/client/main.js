@@ -3,7 +3,14 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import Topbar from "./views/topbar";
 import BottomNav from "./views/bottomNav";
+import { connect, Provider } from "react-redux";
+import LearningStore from "./reducer/learningStore";
+import Compose from "recompose/compose"
+
+
 import "./main.css";
+import actionCreator from "./reducer/actionCreator";
+import Content from "./views/content";
 
 const styles = theme =>({
   root:{
@@ -14,18 +21,23 @@ const styles = theme =>({
 class ClientApp extends React.Component{
 
   render(){
-    const {classes} = this.props;
+ 
     return(
       <div className="root">
         <div className="topbar">
           <Topbar></Topbar>
         </div>
           
-        <div className = "content">abc</div>
+        <div className = "content">
+          <Content activeView={this.props.activeView} 
+            onExaminClick ={this.props.onExaminClick}
+            onExaminClose = {this.props.onExaminClose}
+            examin = {this.props.examin} ></Content>
+        </div>
           
           
-        <div className = "navbar">
-          <BottomNav></BottomNav>
+        <div className = "navbar" >
+          <BottomNav onSwitch={this.props.onSwitch} value={this.props.activeView}></BottomNav>
         </div>  
           
       </div>
@@ -34,4 +46,26 @@ class ClientApp extends React.Component{
 
 }
 
-export default withStyles(styles)(ClientApp);
+
+const mapStateToProps =(state)=>{
+  return {
+    activeView : state.switchView,
+    examin: state.examin,
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    onSwitch:(value)=>dispatch(actionCreator.switchView(value)),
+    onExaminClick:(value)=>dispatch(actionCreator.examinClick(value)),
+    onExaminClose:()=>dispatch(actionCreator.examinClose())
+  }
+}
+
+const ComposedApp = Compose(withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps))(ClientApp);
+
+
+
+
+export default ComposedApp;
