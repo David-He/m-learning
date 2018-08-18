@@ -15,6 +15,7 @@
     "react/jsx-one-expression-per-line":"off",
     "indent":"off",
     "no-var":"off",
-    "no-unused-vars":"warn"
+    "no-unused-vars":"warn",
+    "prefer-const":"off"
   }
 }
