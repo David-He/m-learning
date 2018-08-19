@@ -27,17 +27,18 @@ const styles = theme => ({
 
 
 class Examins extends React.Component{
-    handleClick = function(e){
+    handleClick = function(number){
         if(this.props.onExaminClick)
-          this.props.onExaminClick(e.target.key);
+          this.props.onExaminClick(number);
     }
+
     render(){
         const classes = this.props;
         const month = [0, 1, 2, 3];
         const listItems = month.map((number)=>{
             let badgeNum =  moment().subtract(number, 'months').format('M');
             return(
-            <ListItem button key={number} onClick={this.handleClick.bind(this, event)}>
+            <ListItem button key={number} onClick={()=>this.handleClick(number)}>
                 <ListItemIcon>
                     <Badge className={classes.margin} badgeContent={badgeNum} color="primary">
                         <MonthIcon />
