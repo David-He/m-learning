@@ -19,7 +19,22 @@ const actionCreator = {
         return{
             type: constants.ExaminClose
         }
+    },
+
+    learningClick(value){
+        return{
+            type: constants.LearningClick,
+            value: value
+        }
+    },
+
+    learningClose(){
+        return{
+            type: constants.LearningClose
+        }
     }
+
+
 }
 
 export default actionCreator;

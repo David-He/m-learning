@@ -13,10 +13,13 @@ class Content extends React.Component{
         if (this.props.activeView)
           view = this.props.activeView;
         let examin = this.props.examin;
+        let learning = this.props.learning;
         console.log(view);
         let comp; 
         if (view == 0)
-            comp = <Learnings></Learnings>
+            comp = <Learnings onLearningClick={this.props.onLearningClick}
+              onLearningClose={this.props.onLearningClose}
+              learning = {learning}></Learnings>
            
         else 
            comp = <Examins onExaminClick={this.props.onExaminClick}
@@ -40,6 +43,9 @@ Content.propTypes={
     examin: PropTypes.object,
     onExaminClick: PropTypes.func,
     onExaminClose: PropTypes.func,
+    learning: PropTypes.object,
+    onLearningClick: PropTypes.func,
+    onLearningClose: PropTypes.func,
 }
 
 export default Content;

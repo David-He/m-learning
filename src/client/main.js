@@ -32,7 +32,10 @@ class ClientApp extends React.Component{
           <Content activeView={this.props.activeView} 
             onExaminClick ={this.props.onExaminClick}
             onExaminClose = {this.props.onExaminClose}
-            examin = {this.props.examin} ></Content>
+            examin = {this.props.examin} 
+            onLearningClick={this.props.onLearningClick}
+            onLearningClose={this.props.onLearningClose}
+            learning = {this.props.learning}></Content>
         </div>
           
           
@@ -51,6 +54,7 @@ const mapStateToProps =(state)=>{
   return {
     activeView : state.switchView,
     examin: state.examin,
+    learning: state.learning,
   }
 }
 
@@ -58,7 +62,9 @@ const mapDispatchToProps = (dispatch) =>{
   return{
     onSwitch:(value)=>dispatch(actionCreator.switchView(value)),
     onExaminClick:(value)=>dispatch(actionCreator.examinClick(value)),
-    onExaminClose:()=>dispatch(actionCreator.examinClose())
+    onExaminClose:()=>dispatch(actionCreator.examinClose()),
+    onLearningClick:(value)=>dispatch(actionCreator.learningClick(value)),
+    onLearningClose:()=>dispatch(actionCreator.learningClose())
   }
 }
 

@@ -51,7 +51,7 @@ const styles = theme => ({
                         name="Answer"
                         aria-label="Answer"
                         value={answer}
-                        onChange={this.handleChange('spacing')}
+                        onChange={this.handleChange()}
                         row
                     >
                     {question.selection.map(value =>(

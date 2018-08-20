@@ -6,10 +6,15 @@ const initialState ={
     examin:{
         open: false,
         month: 0,
+    },
+
+    learning:{
+        open: false,
+        month: 0,
     }
 }
 
-const learningReducer = (state = initialState.activeView, action)=>{
+const defaultReducer = (state = initialState.activeView, action)=>{
     console.log(action);
     switch(action.type){
         case constants.SwitchView:
@@ -39,9 +44,28 @@ const examinReducer = (state = initialState.examin, action)=>{
     }
 }
 
+const learningReducer = (state = initialState.learning, action)=>{
+    console.log(action)
+    switch(action.type){
+        case constants.LearningClick:
+            return{
+                open: true,
+                month: action.value,
+            };
+        case constants.LearningClose:
+            return{
+                open: false,
+                month: 0
+            };
+        default:
+          return state
+    }
+}
+
 const Reducer = combineReducers({
-    switchView: learningReducer,
-    examin: examinReducer
+    switchView: defaultReducer,
+    examin: examinReducer,
+    learning: learningReducer,
 });
 
 export default Reducer;
